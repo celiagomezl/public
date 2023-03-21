@@ -70,7 +70,7 @@ components:
         - total
       properties:
         result:
-        "$ref": "#/components/schemas/ResultBody"
+          "$ref": "#/components/schemas/ResultBody"
         rating:
           type: integer
         total:
@@ -80,9 +80,9 @@ components:
       type: object
       properties:
         asnef:
-        "$ref": "#/components/schemas/AsnefBody"
+          "$ref": "#/components/schemas/AsnefBody"
         aeat:
-        "$ref": "#/components/schemas/AeatBody"
+          "$ref": "#/components/schemas/AeatBody"
     
     AsnefBody:
       type: object

@@ -32,7 +32,7 @@ paths:
           schema:
             type: array
             items:
-              type: "$ref": "#/components/schemas/ScoringExcludeBody"
+              "$ref": "#/components/schemas/ScoringExcludeBody"
             
       responses:
         '200':

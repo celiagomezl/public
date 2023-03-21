@@ -32,7 +32,7 @@ paths:
           schema:
             type: array
             items:
-              "$ref": "#/components/schemas/ScoringExcludeBody"
+               $ref: "#/components/schemas/ScoringExcludeBody"
             
       responses:
         '200':
@@ -58,9 +58,9 @@ components:
         - scoring
       properties:
         scoring:
-          "$ref": "#/components/schemas/ScoringResponseInfoBody"
+          $ref: "#/components/schemas/ScoringResponseInfoBody"
         deb_interna:
-          "$ref": "#/components/schemas/DebInternaBody"
+          $ref: "#/components/schemas/DebInternaBody"
 
     ScoringResponseInfoBody:
       type: object
@@ -70,7 +70,7 @@ components:
         - total
       properties:
         result:
-          "$ref": "#/components/schemas/ResultBody"
+          $ref: "#/components/schemas/ResultBody"
         rating:
           type: integer
         total:
@@ -80,9 +80,9 @@ components:
       type: object
       properties:
         asnef:
-          "$ref": "#/components/schemas/AsnefBody"
+          $ref: "#/components/schemas/AsnefBody"
         aeat:
-          "$ref": "#/components/schemas/AeatBody"
+          $ref: "#/components/schemas/AeatBody"
     
     AsnefBody:
       type: object
@@ -100,7 +100,7 @@ components:
         telcoUnpaid:
           type: integer
         error:
-          "$ref": "#/components/schemas/ErrorBody"
+          $ref: "#/components/schemas/ErrorBody"
     
     AeatBody:
       type: object
@@ -112,7 +112,7 @@ components:
         name:
           type: string
         error:
-          "$ref": "#/components/schemas/ErrorBody"
+          $ref: "#/components/schemas/ErrorBody"
 
     ScoringExcludeBody:
       type: string

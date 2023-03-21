@@ -31,8 +31,8 @@ paths:
           required: false
           schema:
             type: array
-              items:
-                type: "$ref": "#/components/schemas/ScoringExcludeBody"
+            items:
+              type: "$ref": "#/components/schemas/ScoringExcludeBody"
             
       responses:
         '200':

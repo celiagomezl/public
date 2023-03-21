@@ -1,0 +1,137 @@
+openapi: 3.0.1
+info:
+  title: 'Spring Boot: Scoring'
+  description: Scoring
+  version: v0.0.1
+  contact:
+    name: Optare Solutions
+    url: http://www.optaresolutions.com
+    email: help@optaresolutions.com
+servers:
+  - url: https://billing.eurona.com/scoring
+    description: Generated server url
+tags:
+  - name: Bill Manager
+    description: Operations Controller for query Bills
+paths:
+  /scoring/{customerIdentifier}:
+    get:
+      tags:
+        - scoring-controller
+      description: get-scoring
+      operationId: postCollectionResource-scoring-get
+      parameters:
+        - name: customerIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: exclude
+          in: query
+          required: false
+          schema:
+            type: array
+              items:
+                type: "$ref": "#/components/schemas/ScoringExcludeBody"
+            
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ScoringResponseBody'
+            application/x-spring-data-compact+json:
+              schema:
+                $ref: '#/components/schemas/ScoringResponseBody'
+            text/uri-list:
+              schema:
+                type: string
+        '404':
+          description: Not Found
+          
+components:
+  schemas:    
+    ScoringResponseBody:
+      type: object
+      required: 
+        - scoring
+      properties:
+        scoring:
+          "$ref": "#/components/schemas/ScoringResponseInfoBody"
+        deb_interna:
+          "$ref": "#/components/schemas/DebInternaBody"
+
+    ScoringResponseInfoBody:
+      type: object
+      required:
+        - result
+        - rating
+        - total
+      properties:
+        result:
+        "$ref": "#/components/schemas/ResultBody"
+        rating:
+          type: integer
+        total:
+          type: integer
+    
+    DebInternaBody:
+      type: object
+      properties:
+        asnef:
+        "$ref": "#/components/schemas/AsnefBody"
+        aeat:
+        "$ref": "#/components/schemas/AeatBody"
+    
+    AsnefBody:
+      type: object
+      properties:
+        rating:
+          type: integer
+        present:
+          type: boolean
+        totalOperations:
+          type: integer
+        totalUnpaid:
+          type: integer
+        telcoOperations:
+          type: integer
+        telcoUnpaid:
+          type: integer
+        error:
+          "$ref": "#/components/schemas/ErrorBody"
+    
+    AeatBody:
+      type: object
+      properties:
+        result:
+          type: string
+        identifier:
+          type: string
+        name:
+          type: string
+        error:
+          "$ref": "#/components/schemas/ErrorBody"
+
+    ScoringExcludeBody:
+      type: string
+      enum:
+      - asnef
+      - aeat
+
+    ResultBody:
+      type: string
+      enum:
+      - OK
+      - KO   
+    
+    ErrorBody:
+      type: object
+      required:
+        - code
+        - description
+      properties:
+        code: string
+        description: string
+  

@@ -42,9 +42,6 @@ paths:
             application/x-spring-data-compact+json:
               schema:
                 $ref: '#/components/schemas/ScoringResponseBody'
-            text/uri-list:
-              schema:
-                type: string
         '404':
           description: Not Found
           
@@ -124,6 +121,8 @@ components:
         - code
         - description
       properties:
-        code: string
-        description: string
+        code: 
+          type: string
+        description: 
+          type: string
   

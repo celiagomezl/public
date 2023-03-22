@@ -66,9 +66,7 @@ components:
       properties:
         result:
           "$ref": "#/components/schemas/ResultBody"
-        rating:
-          type: integer
-        total:
+        totalDebt:
           type: number
           format: float
     

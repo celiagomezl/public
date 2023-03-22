@@ -26,13 +26,17 @@ paths:
           required: true
           schema:
             type: string
-        - name: exclude
+        - name: asnef
           in: query
           required: false
           schema:
-            type: array
-            items:
-               $ref: "#/components/schemas/ScoringExcludeBody"
+            type: boolean
+        - name: aeat
+          in: query
+          required: false
+          schema:
+            type: boolean
+            
       responses:
         '200':
           description: OK
@@ -118,11 +122,6 @@ components:
         error:
           "$ref": "#/components/schemas/ErrorBody"
 
-    ScoringExcludeBody:
-      type: string
-      enum:
-      - asnef
-      - aeat
       
     ResultBody:
       type: string

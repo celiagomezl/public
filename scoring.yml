@@ -66,13 +66,16 @@ components:
       type: object
       required:
         - result
-        - totalDebt
       properties:
         result:
           "$ref": "#/components/schemas/ResultBody"
         totalDebt:
           type: number
           format: float
+        asnef:
+          "$ref": "#/components/schemas/AsnefBody"
+        aeat:
+          "$ref": "#/components/schemas/AeatBody"
     
     InternalDebtBody:
       type: object
@@ -85,10 +88,6 @@ components:
           format: float
         Quantis:
           type: integer
-        asnef:
-          "$ref": "#/components/schemas/AsnefBody"
-        aeat:
-          "$ref": "#/components/schemas/AeatBody"
     
     AsnefBody:
       type: object

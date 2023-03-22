@@ -29,9 +29,11 @@ paths:
         - name: exclude
           in: query
           required: false
-          type: array
-          items: 
-            type: string            
+          schema:
+            type: array
+            items:
+               $ref: "#/components/schemas/ScoringExcludeBody"
+              -
       responses:
         '200':
           description: OK
@@ -109,6 +111,12 @@ components:
         error:
           "$ref": "#/components/schemas/ErrorBody"
 
+    ScoringExcludeBody:
+      type: string
+      enum:
+      - asnef
+      - aeat
+      
     ResultBody:
       type: string
       enum:

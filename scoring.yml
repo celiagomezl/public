@@ -33,7 +33,6 @@ paths:
             type: array
             items:
                $ref: "#/components/schemas/ScoringExcludeBody"
-              -
       responses:
         '200':
           description: OK

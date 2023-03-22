@@ -69,7 +69,8 @@ components:
         rating:
           type: integer
         total:
-          type: float
+          type: number
+          format: float
     
     InternalDebtBody:
       type: object
@@ -78,7 +79,8 @@ components:
         - Quantis
       properties:
         GTS:
-          type: float
+          type: number
+          format: float
         Quantis:
           type: integer
         asnef:
@@ -96,11 +98,13 @@ components:
         totalOperations:
           type: integer
         totalDebt:
-          type: float
+          type: number
+          format: float
         telcoOperations:
           type: integer
         telcoDebt:
-          type: float
+          type: number
+          format: float
         error:
           "$ref": "#/components/schemas/ErrorBody"
     

@@ -56,26 +56,28 @@ components:
       type: object
       required: 
         - scoring
+        - internalDebt
       properties:
         scoring:
           "$ref": "#/components/schemas/ScoringResponseInfoBody"
         internalDebt:
           "$ref": "#/components/schemas/InternalDebtBody"
+        asnef:
+          "$ref": "#/components/schemas/AsnefBody"
+        aeat:
+          "$ref": "#/components/schemas/AeatBody"
 
     ScoringResponseInfoBody:
       type: object
       required:
         - result
+        - totalDebt
       properties:
         result:
           "$ref": "#/components/schemas/ResultBody"
         totalDebt:
           type: number
           format: float
-        asnef:
-          "$ref": "#/components/schemas/AsnefBody"
-        aeat:
-          "$ref": "#/components/schemas/AeatBody"
     
     InternalDebtBody:
       type: object

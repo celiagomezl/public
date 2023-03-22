@@ -55,26 +55,32 @@ components:
       properties:
         scoring:
           "$ref": "#/components/schemas/ScoringResponseInfoBody"
-        deb_interna:
-          "$ref": "#/components/schemas/DebInternaBody"
+        internalDebt:
+          "$ref": "#/components/schemas/InternalDebtBody"
 
     ScoringResponseInfoBody:
       type: object
       required:
         - result
-        - rating
-        - total
+        - totalDebt
       properties:
         result:
           "$ref": "#/components/schemas/ResultBody"
         rating:
           type: integer
         total:
-          type: integer
+          type: float
     
-    DebInternaBody:
+    InternalDebtBody:
       type: object
+      required:
+        - GTS
+        - Quantis
       properties:
+        GTS:
+          type: float
+        Quantis:
+          type: integer
         asnef:
           "$ref": "#/components/schemas/AsnefBody"
         aeat:
@@ -89,12 +95,12 @@ components:
           type: boolean
         totalOperations:
           type: integer
-        totalUnpaid:
-          type: integer
+        totalDebt:
+          type: float
         telcoOperations:
           type: integer
-        telcoUnpaid:
-          type: integer
+        telcoDebt:
+          type: float
         error:
           "$ref": "#/components/schemas/ErrorBody"
     

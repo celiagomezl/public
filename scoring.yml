@@ -31,11 +31,7 @@ paths:
           required: false
           type: array
           items: 
-            type: string
-            enum:
-              - asnef
-              - aeat
-            
+            type: string            
       responses:
         '200':
           description: OK
@@ -115,12 +111,6 @@ components:
           type: string
         error:
           "$ref": "#/components/schemas/ErrorBody"
-
-    ScoringExcludeBody:
-      type: string
-      enum:
-      - asnef
-      - aeat
 
     ResultBody:
       type: string

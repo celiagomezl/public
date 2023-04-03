@@ -82,14 +82,15 @@ components:
     InternalDebtBody:
       type: object
       required:
-        - GTS
+        - GST
         - Quantis
       properties:
-        GTS:
+        GST:
           type: number
           format: float
         Quantis:
-          type: integer
+          type: number
+          format: float
     
     AsnefBody:
       type: object

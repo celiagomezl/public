@@ -48,7 +48,7 @@ components:
         - GST
         - Quantis
       properties:
-        GTS:
+        GST:
           type: number
           format: float
         Quantis:

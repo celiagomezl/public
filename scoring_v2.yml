@@ -1,0 +1,167 @@
+openapi: 3.0.1
+info:
+  title: 'Spring Boot: Scoring'
+  description: Scoring
+  version: v0.0.1
+  contact:
+    name: Optare Solutions
+    url: http://www.optaresolutions.com
+    email: help@optaresolutions.com
+servers:
+  - url: https://billing.eurona.com/scoring
+    description: Generated server url
+tags:
+  - name: Bill Manager
+    description: Operations Controller for query Bills
+paths:
+  /scoring/{customerIdentifier}:
+    get:
+      tags:
+        - scoring-controller
+      description: get-scoring
+      operationId: postCollectionResource-scoring-get
+      parameters:
+        - name: customerIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: asnef
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: aeat
+          in: query
+          required: false
+          schema:
+            type: boolean
+            
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ScoringResponseBody'
+            application/x-spring-data-compact+json:
+              schema:
+                $ref: '#/components/schemas/ScoringResponseBody'
+        '404':
+          description: Not Found
+          
+components:
+  schemas:    
+    ScoringResponseBody:
+      type: object
+      required: 
+        - scoring
+        - internalDebt
+      properties:
+        internalDebt:
+          "$ref": "#/components/schemas/InternalDebtBody"
+        asnef:
+          "$ref": "#/components/schemas/AsnefBody"
+        aeat:
+          "$ref": "#/components/schemas/AeatBody"
+    
+    InternalDebtBody:
+      type: object
+      required:
+        - GST
+        - Quantis
+      properties:
+        GST:
+          type: number
+          format: float
+        Quantis:
+          type: number
+          format: float
+    
+    AsnefBody:
+      type: object
+      properties:
+        totalNumberOfOperations: 
+          type: integer
+        numberOfConsumerCreditOperations: 
+          type: integer
+        numberOfMortgageOperations: 
+          type: integer
+        numberOfPersonalLoanOperations: 
+          type: integer
+        numberOfCreditCardOperations: 
+          type: integer
+        numberOfTelcoOperations: 
+          type: integer
+        totalNumberOfOtherUnpaid: 
+          type: integer
+        totalUnpaidBalance: 
+          type: number 
+          format: float
+        unpaidBalanceOwnEntity: 
+          type: number 
+          format: float
+        unpaidBalanceOfOtherEntities: 
+          type: number 
+          format: float
+        unpaidBalanceOfConsumerCredit: 
+          type: number 
+          format: float
+        unpaidBalanceOfMortgage: 
+          type: number 
+          format: float
+        unpaidBalanceOfPersonalLoan: 
+          type: number 
+          format: float
+        unpaidBalanceOfCreditCard: 
+          type: number 
+          format: float
+        unpaidBalanceOfTelco: 
+          type: number 
+          format: float
+        unpaidBalanceOfOtherProducts: 
+          type: number 
+          format: float
+        worstUnpaidBalance:  
+          type: integer
+        worstSituationCode: 
+          type: string
+        numberOfDaysOfWorstSituation:  
+          type: integer
+        numberOfCreditors: 
+          type: integer
+        delincuencyDays: 
+          type: integer
+        error:
+          "$ref": "#/components/schemas/ErrorBody"
+    
+    AeatBody:
+      type: object
+      properties:
+        result:
+          type: string
+        identifier:
+          type: string
+        name:
+          type: string
+        error:
+          "$ref": "#/components/schemas/ErrorBody"
+
+      
+    ResultBody:
+      type: string
+      enum:
+      - OK
+      - KO   
+    
+    ErrorBody:
+      type: object
+      required:
+        - code
+        - description
+      properties:
+        code: 
+          type: string
+        description: 
+          type: string
+  

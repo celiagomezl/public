@@ -44,14 +44,6 @@ components:
   schemas:    
     CustomerResponseBody:
       type: object
-      required: 
-        - internalDebt
-      properties:
-        internalDebt:
-          "$ref": "#/components/schemas/InternalDebtBody"
-
-    InternalDebtBody:
-      type: object
       required:
         - GST
         - Quantis

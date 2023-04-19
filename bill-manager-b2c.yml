@@ -53,7 +53,7 @@ components:
     InternalDebtBody:
       type: object
       required:
-        - GTS
+        - GST
         - Quantis
       properties:
         GTS:

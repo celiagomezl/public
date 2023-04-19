@@ -1,0 +1,64 @@
+openapi: 3.0.1
+info:
+  title: 'Spring Boot: Bill-manager-b2c'
+  description: Bill-manager-b2c
+  version: v0.0.1
+  contact:
+    name: Optare Solutions
+    url: http://www.optaresolutions.com
+    email: help@optaresolutions.com
+servers:
+  - url: https://billing.eurona.com/bill-manager-b2c
+    description: Generated server url
+tags:
+  - name: Bill Manager
+    description: Operations Controller for query Bills
+paths:
+  /customer/{customerIdentifier}:
+    get:
+      tags:
+        - bill-manager-b2c-controller
+      description: get-customer-internal-debt
+      operationId: postCollectionResource-customer-internal-debt-get
+      parameters:
+        - name: customerIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponseBody'
+            application/x-spring-data-compact+json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponseBody'
+        '404':
+          description: Not Found
+
+components:
+  schemas:    
+    CustomerResponseBody:
+      type: object
+      required: 
+        - internalDebt
+      properties:
+        internalDebt:
+          "$ref": "#/components/schemas/InternalDebtBody"
+
+    InternalDebtBody:
+      type: object
+      required:
+        - GTS
+        - Quantis
+      properties:
+        GTS:
+          type: number
+          format: float
+        Quantis:
+          type: integer
+          format: float

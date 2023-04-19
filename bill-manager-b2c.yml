@@ -60,5 +60,5 @@ components:
           type: number
           format: float
         Quantis:
-          type: integer
+          type: number
           format: float
